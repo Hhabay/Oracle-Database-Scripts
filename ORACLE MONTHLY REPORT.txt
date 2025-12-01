@@ -1,0 +1,178 @@
+ORACLE MONTHLY REPORT
+
+AWR
+===================
+EOM
+28567  31 Oct 2025 22:00    1
+28568  31 Oct 2025 22:30    1
+28569  31 Oct 2025 23:00    1
+28570  31 Oct 2025 23:30    1
+28571  01 Nov 2025 00:00    1
+28572  01 Nov 2025 00:30    1
+28573  01 Nov 2025 01:00    1
+28574  01 Nov 2025 01:30    1
+28575  01 Nov 2025 02:00    1
+28576  01 Nov 2025 02:30    1
+28577  01 Nov 2025 03:00    1
+
+EOD
+29719  24 Nov 2025 22:00    1
+29720  24 Nov 2025 22:30    1
+29721  24 Nov 2025 23:00    1
+29722  24 Nov 2025 23:30    1
+29723  25 Nov 2025 00:00    1
+29724  25 Nov 2025 00:30    1
+29725  25 Nov 2025 01:00    1
+29726  25 Nov 2025 01:30    1
+29727  25 Nov 2025 02:00    1
+29728  25 Nov 2025 02:30    1
+29729  25 Nov 2025 03:00    1
+ 
+alter session set "_hash_join_enabled" = true;
+
+@$ORACLE_HOME/rdbms/admin/awrrpt.sql
+
+
+ADDM
+================================
+alter session set "_hash_join_enabled" = true;
+
+@$ORACLE_HOME/rdbms/admin/addmrpti.sql
+
+EOM
+28567  31 Oct 2025 22:00    1
+28568  31 Oct 2025 22:30    1
+28569  31 Oct 2025 23:00    1
+28570  31 Oct 2025 23:30    1
+28571  01 Nov 2025 00:00    1
+28572  01 Nov 2025 00:30    1
+28573  01 Nov 2025 01:00    1
+28574  01 Nov 2025 01:30    1
+28575  01 Nov 2025 02:00    1
+28576  01 Nov 2025 02:30    1
+28577  01 Nov 2025 03:00    1
+
+EOD
+29719  24 Nov 2025 22:00    1
+29720  24 Nov 2025 22:30    1
+29721  24 Nov 2025 23:00    1
+29722  24 Nov 2025 23:30    1
+29723  25 Nov 2025 00:00    1
+29724  25 Nov 2025 00:30    1
+29725  25 Nov 2025 01:00    1
+29726  25 Nov 2025 01:30    1
+29727  25 Nov 2025 02:00    1
+29728  25 Nov 2025 02:30    1
+29729  25 Nov 2025 03:00    1
+
+addmrpt_1_280624_2200_2300.txt
+addmrpt_2_280624_2200_2300.txt
+addmrpt_1_280624_2300_0000.txt
+
+
+
+ASH
+===================
+
+alter session set "_hash_join_enabled" = true;
+@$ORACLE_HOME/rdbms/admin/ashrpt.sql
+
+
+10/31/25 22:00:00
+10/31/25 23:00:00
+11/01/25 00:00:00
+11/01/25 01:00:00
+11/01/25 02:00:00
+
+
+11/24/25 22:00:00
+11/24/25 23:00:00
+11/25/25 00:00:00
+11/25/25 01:00:00
+11/25/25 02:00:00
+
+
+ashrpt_1_280624_2200_23000.txt
+ashrpt_2_280624_2200_23000.txt
+ashrpt_1_280624_2300_00000.txt
+ashrpt_2_280624_2300_00000.txt
+ashrpt_1_280624_0000_01000.txt
+ashrpt_2_280624_0000_01000.txt
+ashrpt_1_280624_0100_02000.txt
+ashrpt_2_280624_0100_02000.txt
+ashrpt_1_280624_0200_03000.txt
+ashrpt_2_280624_0200_03000.txt
+
+
+ALERTLOG
+==============================
+@$diagnostic_dest/diag/fcmbprod/FCMBPROD1/trace/alert_SID.log
+SELECT value
+FROM V$DIAG_INFO
+WHERE name = 'Diag Trace';
+
+
+/u01/app/oracle/diag/rdbms/fcmbprod/FCMBPROD1/trace
+/u01/app/oracle/diag/rdbms/fcmbprod/FCMBPROD2/trace
+
+awk '/08-31T22/,/09-01T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_EOM_31AUG2025.log
+awk '/08-31T22/,/09-01T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_EOM_31AUG2025.log
+
+awk '/09-22T22/,/09-23T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_EOD_23SEPT2025.log
+awk '/09-22T22/,/09-23T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_EOD_23SEPT2025.log
+
+08-31T10 - 31st OF AUG AT 10PM
+09-22T03 - 22nd OF SEP AT 3AM
+
+
+
+AWR DUMP FILE
+==============================
+
+start $ORACLE_HOME/rdbms/admin/awrextr.sql
+
+
+Directory Name                 Directory Path
+------------------------------ -------------------------------------------------
+
+XTT_DIR                        /home/oracle/migration
+
+ORACLE_BASE			/u01/app/oracle
+
+SELECT value
+FROM V$DIAG_INFO
+WHERE name = 'Diag Trace';
+
+
+/u01/app/oracle/diag/rdbms/fcmbprod/FCMBPROD1/trace
+/u01/app/oracle/diag/rdbms/fcmbprod/FCMBPROD2/trace
+
+alert_FCMBPROD1.log
+
+
+awk '/06-28T10/,/06-29T03/' alert_FCMBPROD1.log | sed '$d' alertLOGfcmbprd1_june.log
+
+awk '/06-28T10/,/06-29T03/' alertLOGfcmbprd1_today22.log | sed '$d'
+
+
+
+
+awk '/07-25T10/,/07-26T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_july.log
+07-25T10 - 25TH OF JULY AT 10PM
+07-26T03 - 25TH OF JULY AT 3AM
+
+
+awk '/2025-09-30T10/,/2025-10-01T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_Oct_EOM1.log
+awk '/2025-09-30T10/,/2025-10-01T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_Oct_EOM2.log
+
+awk '/2025-10-21T10/,/2025-10-22T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_Oct_EOD1.log
+awk '/2025-10-21T10/,/2025-10-22T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_Oct_EOD2.log
+
+
+
+
+awk '/2025-10-31T10/,/2025-11-01T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_Nov2025_EOM1.log
+awk '/2025-10-31T10/,/2025-11-01T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_Nov2025_EOM2.log
+
+awk '/2025-11-24T10/,/2025-11-25T03/' alert_FCMBPROD1.log | sed '$d' > alertLOGfcmbprd1_Nov2025_EOD1.log
+awk '/2025-11-24T10/,/2025-11-25T03/' alert_FCMBPROD2.log | sed '$d' > alertLOGfcmbprd2_Nov2025_EOD2.log
